@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ficha PP8 · NNA Escolarizados · Rebolo 2026</title>
+<title>Ficha PTC8 · NNA Escolarizados · Rebolo 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,800;1,400;1,800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -102,7 +102,7 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
     <div class="tb-name">OSCC — Barranquilla 2026<span>Fichas de Levantamiento · Problemas Públicos</span></div>
   </div>
   <div class="tb-pills">
-    <span class="pill pill-teal">Problema Público N° 8</span>
+    <span class="pill pill-teal">Problema Territorial Convivencia PTC N° 8</span>
     <span class="pill pill-gold">NNA Escolarizados · Entornos Educativos</span>
   </div>
 </div>
@@ -152,7 +152,7 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
     </div>
     <form id="fichaForm">
     <input type="hidden" name="codigo_ficha" id="codigoFicha">
-    <input type="hidden" name="tipo_problema" value="PP8-NNA-ESCOLARIZADOS">
+    <input type="hidden" name="tipo_problema" value="PTC8-NNA-ESCOLARIZADOS">
     
     <div class="section vis" id="s0">
       <div class="card">
@@ -594,7 +594,7 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
   </div>
 </div>
 <div class="footer">
-  <div><b>OSCC Barranquilla 2026</b> · Ficha PP8 · NNA Escolarizados · Entornos Educativos</div>
+  <div><b>OSCC Barranquilla 2026</b> · Ficha PTC8 · NNA Escolarizados · Entornos Educativos</div>
   <div>VIRTUS GLOBAL · Consultoría Fase 2 · Barrio Rebolo · Confidencial</div>
 </div>
 <script>
@@ -668,12 +668,12 @@ function enviarABaseDeDatos(payload) {
 }
 
 function submitFicha(){
-  const cod='PP8-REB-'+Date.now().toString(36).toUpperCase();
+  const cod='PTC8-REB-'+Date.now().toString(36).toUpperCase();
   document.getElementById('codigoFicha').value=cod;
   const payload = recolectarDatosFormulario();
   payload.codigo_ficha = cod;
   enviarABaseDeDatos(payload)
-    .then(() => console.log('✓ Ficha PP8 sincronizada con la base de datos'))
+    .then(() => console.log('✓ Ficha PTC8 sincronizada con la base de datos'))
     .catch(err => console.warn('⚠ No se pudo sincronizar con la base de datos (se guarda solo el código local):', err));
   document.getElementById('fichaFormContainer').style.display='none';
   const sc=document.getElementById('successScreen');
