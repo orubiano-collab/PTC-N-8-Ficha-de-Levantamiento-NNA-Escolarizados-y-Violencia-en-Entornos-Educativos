@@ -109,15 +109,15 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 <div class="hero">
   <div class="hero-grid"></div><div class="hero-glow"></div>
   <div class="hero-inner">
-    <div class="prob-badge">Problema Público Priorizado · Barrio Rebolo · Diagnóstico Territorial</div>
+    <div class="prob-badge">Problema Público Priorizado · Diagnóstico Territorial · Rebolo / Gran Bazar</div>
     <h1>Ficha de Levantamiento:<br><em>NNA Escolarizados</em><br>y Violencia en Entornos Educativos</h1>
     <div class="prob-text">
       <strong>Problema Público:</strong> Confluencia en la población de menores y adolescentes escolarizados de <strong>múltiples factores de riesgo familiar y comunitario</strong>, que desencadenan episodios de violencia interpersonal al interior de las instituciones educativas o en sus alrededores.
     </div>
     <div class="zones-row">
-      <div class="zone-chip"><div class="dot dot-red"></div> Barrio Rebolo</div>
-      <div class="zone-chip"><div class="dot dot-red"></div> Entornos Educativos</div>
-      <div class="zone-chip"><div class="dot dot-gold"></div> 6 manifestaciones</div>
+      <div class="zone-chip"><div class="dot dot-red"></div> Barrio Rebolo · Suroriente</div>
+      <div class="zone-chip"><div class="dot dot-gold"></div> Barrio Gran Bazar · Norte-Centro Histórico</div>
+      <div class="zone-chip"><div class="dot dot-red"></div> 6 manifestaciones</div>
       <div class="zone-chip"><div class="dot dot-gold"></div> Protección NNA</div>
     </div>
     <div class="stats-row">
@@ -168,9 +168,16 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
             <div class="fld"><label class="lbl">Cargo / Rol</label>
               <select name="cargo"><option value="">Seleccionar...</option><option>Gestor de Convivencia — OSCC</option><option>Analista Territorial — OSCC</option><option>Consultor — VIRTUS GLOBAL</option><option>Funcionario Alcaldía Local</option><option>Otro</option></select></div>
             <div class="fld"><label class="lbl">Localidad</label>
-              <select name="localidad"><option value="suroriente" selected>Suroriente</option><option>Norte-Centro Histórico</option><option>Sur Occidente</option><option>Riomar</option><option>Metropolitana</option></select></div>
+              <input type="text" name="localidad" id="localidadInput" placeholder="Se actualiza según el barrio" readonly style="background:var(--brd2);color:var(--ink3);">
+            </div>
           </div>
-          <div class="fld"><label class="lbl">Barrio / Sector específico <span class="req">*</span></label><input type="text" name="barrio_sector" value="Rebolo" required></div>
+          <div class="fld"><label class="lbl">Barrio / Sector específico <span class="req">*</span></label>
+            <select name="barrio_sector" id="barrioSelect" required>
+              <option value="">— Seleccione barrio —</option>
+              <option value="Rebolo">Rebolo</option>
+              <option value="Gran Bazar">Gran Bazar</option>
+            </select>
+          </div>
           <div class="fld"><label class="lbl">Tipo de levantamiento</label>
             <div class="opts h">
               <label class="opt"><input type="radio" name="tipo_levant" value="campo"> 🚶 Recorrido de campo</label>
@@ -595,9 +602,29 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 </div>
 <div class="footer">
   <div><b>OSCC Barranquilla 2026</b> · Ficha PTC8 · NNA Escolarizados · Entornos Educativos</div>
-  <div>VIRTUS GLOBAL · Consultoría Fase 2 · Barrio Rebolo · Confidencial</div>
+  <div>VIRTUS GLOBAL · Consultoría Fase 2 · Confidencial</div>
 </div>
 <script>
+// Función para actualizar la localidad según el barrio seleccionado
+function actualizarLocalidad() {
+    const barrioSelect = document.getElementById('barrioSelect');
+    const localidadInput = document.getElementById('localidadInput');
+    const barrio = barrioSelect.value;
+    
+    if (barrio === 'Rebolo') {
+        localidadInput.value = 'Suroriente';
+    } else if (barrio === 'Gran Bazar') {
+        localidadInput.value = 'Norte-Centro Histórico';
+    } else {
+        localidadInput.value = '';
+    }
+}
+
+// Asignar el evento change al select de barrio
+document.getElementById('barrioSelect').addEventListener('change', function() {
+    actualizarLocalidad();
+});
+
 const TOTAL_SEC=5;let cur=0;
 function goTo(idx){if(idx<0||idx>=TOTAL_SEC)return;
   document.querySelectorAll('.section').forEach((s,i)=>s.classList.toggle('vis',i===idx));
